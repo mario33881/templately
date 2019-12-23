@@ -51,7 +51,13 @@ class TestTemplately(unittest.TestCase):
 
         # passing all custom parameters
         custom_re = templately.re_builder(t_custom_opening_tag, t_custom_pattern_opening, t_custom_closing_tag)
-        self.assertEqual(custom_re, re.compile('\\%\\%\\s*template\\.(.*?)\\s*\\$\\$'))
+
+        # from version 3.7 re.escape() doesn't escape characters that have no special meaning
+        # https://docs.python.org/3/library/re.html#re.escape
+        if sys.version_info[0] > 3 or (sys.version_info[0] == 3 and sys.version_info[1] > 6):
+            self.assertEqual(custom_re, re.compile('%%\\s*template\\.(.*?)\\s*\\$\\$'))
+        else:
+            self.assertEqual(custom_re, re.compile('\\%\\%\\s*template\\.(.*?)\\s*\\$\\$'))
 
     def test_get_placeholders(self):
         """
