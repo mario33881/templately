@@ -9,7 +9,9 @@ import re
 import unittest
 
 # add to the python path the folder with templately
-sys.path.insert(0, os.path.abspath('../templately/'))
+test_path = os.path.dirname(sys.argv[0])
+templately_path = os.path.join(test_path, "..", "templately")
+sys.path.insert(0, os.path.abspath(templately_path))
 
 # importing templately to test it
 import templately  # noqa: E402
@@ -69,7 +71,7 @@ class TestTemplately(unittest.TestCase):
         ["placeholder1", "placeholder2", "placeholder3"]
         """
 
-        with open("template.txt", "r") as f:
+        with open(os.path.join(test_path, "template.txt"), "r") as f:
             placeholders = templately.get_placeholders(f, '\\{\\{\\s*ty\\.(.*?)\\s*\\}\\}')
 
         self.assertEqual(placeholders, ["placeholder1", "placeholder2", "placeholder3"])
@@ -157,7 +159,7 @@ class TestTemplately(unittest.TestCase):
         self.assertEqual(check_result, {"correct_placeholder": False, "placeholders_names": ["a"]})
 
         # test to file that does exist
-        check_result = templately.check_input_placeholders(["a=file1.txt"])
+        check_result = templately.check_input_placeholders(["a=" + os.path.join(test_path, "file1.txt")])
         self.assertEqual(check_result, {"correct_placeholder": True, "placeholders_names": ["a"]})
 
     def test_check_placeholder_arguments(self):
@@ -227,7 +229,12 @@ class TestTemplately(unittest.TestCase):
         self.assertFalse(check_result)
 
         # test with the same placeholders
-        check_result = templately.check_placeholder_arguments({'<placeholder=file>': ["b=file1.txt", "a=file1.txt"]},
+        check_result = templately.check_placeholder_arguments({'<placeholder=file>': ["b=" + os.path.join(test_path,
+                                                                                                          "file1.txt"),
+                                                                                      "a=" + os.path.join(test_path,
+                                                                                                          "file1.txt")
+                                                                                      ]
+                                                               },
                                                               ["a", "b"])
         self.assertTrue(check_result)
 
@@ -275,17 +282,17 @@ class TestTemplately(unittest.TestCase):
         expected_output = "this is\n----\nthis\nis placeholder1\ncontent\n---- a ----\nthis\nis placeholder2\n" \
                           "content\n----\ntest ----\nthis\nis placeholder3\ncontent\n----"
 
-        with open("template.txt", "r") as t_fin:
+        with open(os.path.join(test_path, "template.txt"), "r") as t_fin:
             templately.output_builder(t_fin,
-                                      {"<output>": "output.txt",
-                                       '<placeholder=file>': ["placeholder1=file1.txt",
-                                                              "placeholder2=file2.txt",
-                                                              "placeholder3=file3.txt"
+                                      {"<output>": os.path.join(test_path, "output.txt"),
+                                       '<placeholder=file>': ["placeholder1=" + os.path.join(test_path, "file1.txt"),
+                                                              "placeholder2=" + os.path.join(test_path, "file2.txt"),
+                                                              "placeholder3=" + os.path.join(test_path, "file3.txt")
                                                               ]
                                        },
                                       re.compile('\\{\\{\\s*ty\\.(.*?)\\s*\\}\\}'))
 
-        with open("output.txt", "r") as fout:
+        with open(os.path.join(test_path, "output.txt"), "r") as fout:
             are_equal = False
             text = fout.read()
             if text == expected_output:
