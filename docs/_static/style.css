@@ -1,0 +1,21 @@
+div.document {
+    /* Bigger width for the main page*/
+    width: 80% !important;
+}
+
+div.sphinxsidebar {
+    /* Bigger sidebar, the title is on one line */ 
+    width: 277px !important;
+}
+
+div.bodywrapper {
+    /* Divide sidebar and main content more,
+       because the sidebar is bigger now
+    */
+    margin: 0 0 0 255px;
+}
+
+div.body {
+    /* Center the main content to the center */
+    margin: 0 auto;
+}

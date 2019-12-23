@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Templately &#8212; templately 01_01 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link href="_static/style.css" rel="stylesheet" type="text/css">
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="templately">
+<h1>Templately<a class="headerlink" href="#templately" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">Templately</span> <span class="n">enables</span> <span class="n">you</span> <span class="n">to</span> <span class="n">inject</span> <span class="n">files</span> <span class="n">content</span>
+<span class="n">inside</span> <span class="n">a</span> <span class="n">main</span> <span class="n">template</span> <span class="n">file</span><span class="o">.</span>
+
+<span class="n">Usage</span><span class="p">:</span>
+ <span class="n">templately</span><span class="o">.</span><span class="n">py</span> <span class="p">[</span><span class="o">--</span><span class="n">ot</span><span class="o">=&lt;</span><span class="n">opening_tag</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">po</span><span class="o">=&lt;</span><span class="n">pattern_opening</span><span class="o">&gt;</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">ct</span><span class="o">=&lt;</span><span class="n">closing_tag</span><span class="o">&gt;</span><span class="p">]</span>
+                     <span class="o">&lt;</span><span class="n">template</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">output</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">placeholder</span><span class="o">=</span><span class="n">file</span><span class="o">&gt;...</span>
+ <span class="n">templately</span><span class="o">.</span><span class="n">py</span> <span class="p">(</span><span class="o">-</span><span class="n">h</span> <span class="o">|</span> <span class="o">--</span><span class="n">help</span><span class="p">)</span>
+ <span class="n">templately</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">version</span>
+
+<span class="n">Options</span><span class="p">:</span>
+ <span class="o">-</span><span class="n">h</span> <span class="o">--</span><span class="n">help</span>     <span class="n">Show</span> <span class="n">this</span> <span class="n">screen</span><span class="o">.</span>
+ <span class="o">--</span><span class="n">version</span>     <span class="n">Show</span> <span class="n">version</span><span class="o">.</span>
+
+
+<span class="n">Details</span><span class="p">:</span>
+<span class="o">-</span> <span class="o">&lt;</span><span class="n">template</span><span class="o">&gt;</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">template</span> <span class="n">file</span>
+<span class="o">-</span> <span class="o">&lt;</span><span class="n">placeholder</span><span class="o">=</span><span class="n">file</span><span class="o">&gt;</span> <span class="p">:</span> <span class="o">*</span> <span class="s2">&quot;placeholder&quot;</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">string</span> <span class="n">to</span> <span class="n">search</span> <span class="n">inside</span> <span class="n">the</span> <span class="n">template</span>
+                       <span class="o">*</span> <span class="s2">&quot;file&quot;</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">file</span> <span class="n">path</span> <span class="n">of</span> <span class="n">which</span> <span class="n">contents</span> <span class="n">gets</span> <span class="n">injected</span> <span class="n">inside</span> <span class="n">the</span> <span class="n">template</span>
+                       <span class="o">&gt;</span> <span class="s2">&quot;=&quot;</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">char</span> <span class="n">that</span> <span class="n">divides</span> <span class="n">placeholder</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">file</span> <span class="n">path</span>
+</pre></div>
+</div>
+<span class="target" id="module-templately"></span><dl class="function">
+<dt id="templately.check_input_placeholders">
+<code class="sig-prename descclassname">templately.</code><code class="sig-name descname">check_input_placeholders</code><span class="sig-paren">(</span><em class="sig-param">t_placeholders</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/templately.html#check_input_placeholders"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#templately.check_input_placeholders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes sure that all the input placeholders are correct</p>
+<p>Specifically it checks if the placeholders contain only one equal sign,
+and if the file paths exist.
+The function returns a dictionary with the check result and the name
+of the placeholders.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t_placeholders</strong> (<em>list</em>) – list of input placeholders</p>
+</dd>
+<dt class="field-even">Return check_result</dt>
+<dd class="field-even"><p>dictionary with a bool check result and a list with placeholders names</p>
+</dd>
+<dt class="field-odd">Rtype check_result</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="templately.check_placeholder_arguments">
+<code class="sig-prename descclassname">templately.</code><code class="sig-name descname">check_placeholder_arguments</code><span class="sig-paren">(</span><em class="sig-param">args</em>, <em class="sig-param">t_template_placeholders</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/templately.html#check_placeholder_arguments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#templately.check_placeholder_arguments" title="Permalink to this definition">¶</a></dt>
+<dd><p>Makes sure that every placeholder argument is written in a valid form.</p>
+<p>Specifically it checks :
+- if the input placeholders contain only one equal sign,
+and if the file paths exist with the <a class="reference internal" href="#templately.check_input_placeholders" title="templately.check_input_placeholders"><code class="xref py py-func docutils literal notranslate"><span class="pre">check_input_placeholders()</span></code></a> function
+- it makes sure that both the template placeholders and input placeholders have no duplicates
+with the <a class="reference internal" href="#templately.has_duplicates" title="templately.has_duplicates"><code class="xref py py-func docutils literal notranslate"><span class="pre">has_duplicates()</span></code></a> function
+- it makes sure that the template placeholders and input placeholders are equal
+with the <a class="reference internal" href="#templately.equal_vectors" title="templately.equal_vectors"><code class="xref py py-func docutils literal notranslate"><span class="pre">equal_vectors()</span></code></a> function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>docopt.Dict</em>) – dictionary with input arguments</p></li>
+<li><p><strong>t_template_placeholders</strong> (<em>list</em>) – list with the placeholders of the template file</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return correct_placeholder</dt>
+<dd class="field-even"><p>boolean value, True if everything is correct, False otherwise</p>
+</dd>
+<dt class="field-odd">Rtype correct_placeholder</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="templately.check_repattern_arguments">
+<code class="sig-prename descclassname">templately.</code><code class="sig-name descname">check_repattern_arguments</code><span class="sig-paren">(</span><em class="sig-param">args</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/templately.html#check_repattern_arguments"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#templately.check_repattern_arguments" title="Permalink to this definition">¶</a></dt>
+<dd><p>The function checks if the user passed a specific placeholder pattern and returns the correct configuration.</p>
+<p>The function checks:
+- if the opening tag wasn’t specified by the user, if so use the default
+- if the pattern opening wasn’t specified by the user, if so use the default
+- if the closing tag wasn’t specified by the user, if so use the default</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">check_repattern_arguments</span><span class="p">({</span><span class="s2">&quot;--ot&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;--po&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;--ct&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">})</span>
+<span class="go">{&quot;--ot&quot;: &quot;{{&quot;, &quot;--po&quot;: &quot;ty.&quot;, &quot;--ct&quot;: &quot;}}&quot;}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">check_repattern_arguments</span><span class="p">({</span><span class="s2">&quot;--ot&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">%%</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;--po&quot;</span><span class="p">:</span> <span class="s2">&quot;template.&quot;</span><span class="p">,</span> <span class="s2">&quot;--ct&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">%%</span><span class="s2">&quot;</span><span class="p">})</span>
+<span class="go">{&quot;--ot&quot;: &quot;%%&quot;, &quot;--po&quot;: &quot;template.&quot;, &quot;--ct&quot;: &quot;%%&quot;}</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>args</strong> (<em>dict</em>) – dictionary with the input arguments</p>
+</dd>
+<dt class="field-even">Return t_arguments</dt>
+<dd class="field-even"><p>dictionary with valid the input argument</p>
+</dd>
+<dt class="field-odd">Rtype t_arguments</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="templately.equal_vectors">
+<code class="sig-prename descclassname">templately.</code><code class="sig-name descname">equal_vectors</code><span class="sig-paren">(</span><em class="sig-param">t_v1</em>, <em class="sig-param">t_v2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/templately.html#equal_vectors"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#templately.equal_vectors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if the vectors are equal</p>
+<p>The two vectors are copied (to maintain the original values),
+the copies get sorted and a “==” operator checks if these vectors are equal.
+The result of the operator is returned.
+&gt; The vectors have to have the same elements, which means that
+&gt; they also have to have the same number of elements</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t_v1</strong> (<em>list</em>) – first list of elements</p></li>
+<li><p><strong>t_v2</strong> (<em>list</em>) – second list of elements</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return are_equal</dt>
+<dd class="field-even"><p>boolean value that indicates if t_v1 and t_v2 are equal</p>
+</dd>
+<dt class="field-odd">Rtype are_equal</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="templately.get_placeholders">
+<code class="sig-prename descclassname">templately.</code><code class="sig-name descname">get_placeholders</code><span class="sig-paren">(</span><em class="sig-param">t_fin</em>, <em class="sig-param">t_regex_pattern</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/templately.html#get_placeholders"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#templately.get_placeholders" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the lines of &lt;t_fin&gt; (template file) one by one and returns the placeholders.</p>
+<p>The file is read one line at the time and the regex pattern
+is used to search for the placeholders inside the line</p>
+<p>Example:</p>
+<p>cat template.txt
+this is
+{{ ty.placeholder1 }} a {{ ty.placeholder2 }}
+test {{ ty.placeholder3 }}
+EOF</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">get_placeholders</span><span class="p">(</span><span class="n">t_fin</span><span class="p">,</span> <span class="s1">&#39;\{\{\s*ty\.(.*?)\s*\}\}&#39;</span><span class="p">)</span>
+<span class="go">[&quot;placeholder1&quot;, &quot;placeholder2&quot;, &quot;placeholder3&quot;]</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t_fin</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">_io.TextIO</span></code>) – template file</p></li>
+<li><p><strong>t_regex_pattern</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">_sre.SRE_Pattern</span></code>) – regex pattern</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return t_placeholders</dt>
+<dd class="field-even"><p>list of template placeholders</p>
+</dd>
+<dt class="field-odd">Rtype t_placeholders</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="templately.has_duplicates">
+<code class="sig-prename descclassname">templately.</code><code class="sig-name descname">has_duplicates</code><span class="sig-paren">(</span><em class="sig-param">t_vector</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/templately.html#has_duplicates"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#templately.has_duplicates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks if there are duplicates inside the passed vector</p>
+<p>The function loops for each element inside the vector, the loop
+stops if the vector ends or if a duplicate element is found.</p>
+<p>if one element is present more than one time the vector contains duplicates
+&gt; count() is used to count how many times the element is present inside the vector</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t_vector</strong> (<em>list</em>) – list with elements</p>
+</dd>
+<dt class="field-even">Return contains_duplicates</dt>
+<dd class="field-even"><p>boolean, True if the list t_vector contains duplicates, False otherwise</p>
+</dd>
+<dt class="field-odd">Rtype contains_duplicates</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="templately.output_builder">
+<code class="sig-prename descclassname">templately.</code><code class="sig-name descname">output_builder</code><span class="sig-paren">(</span><em class="sig-param">t_fin</em>, <em class="sig-param">t_args</em>, <em class="sig-param">t_regex_pattern</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/templately.html#output_builder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#templately.output_builder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds the output file from the template file combined with placeholder files.</p>
+<p>The function opens the output file (we know that the output directory exists),
+then the template file &lt;t_fin&gt; is read one line at a time.</p>
+<p>A regex pattern is used per line to know if it has placeholder(s),
+if it has at least one placeholder an input placeholder is sought
+to get the path of the file to inject into the output.
+&gt; The file to inject is also read one line at a time</p>
+<p>The content of the file is written to the output file and then
+this cycle repeats for all the placeholders of the line.</p>
+<p>If there is no placeholder the line of the template file is directly written to the output.</p>
+<p>Example:</p>
+<p>1. this line is read from the template file
+line = ‘this {{ ty.placeholder1 }} is a {{ ty.placeholder2 }} testn’</p>
+<ol class="arabic simple" start="2">
+<li><p>the regex ( ‘{{ ty.&lt;?&gt; }}’ ) finds at least one match, a loop is used to read the first one, the second one, …</p></li>
+<li><p>The part before the placeholder is written to the output file</p></li>
+</ol>
+<p>4. The placeholder ( ‘&lt;?&gt;’, ‘placeholder1’ ) is sought with another loop inside the input.
+&gt; We already know that the input has a ‘placeholder1=&lt;path1&gt;’</p>
+<p>5. The file to inject path is read from the input placeholder (&lt;path1&gt;) and it is used to read that file.
+The content of the file is written inside the output</p>
+<ol class="arabic simple" start="6">
+<li><p>Phase 3, 4, 5 are repeated until there are placeholders in the line</p></li>
+</ol>
+<p>7. When all the placeholders have been substituted by the “file to inject” content, the part after
+the last placeholder is written to the output file</p>
+<ol class="arabic simple" start="8">
+<li><p>The next line of the template file is read and everything repeats itself again</p></li>
+</ol>
+<p>&gt; If there was no placeholder inside the line, that line is directly written to the output file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t_fin</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">_io.TextIO</span></code>) – template file</p></li>
+<li><p><strong>t_args</strong> (<em>dict</em>) – dictionary with all the input from the terminal</p></li>
+<li><p><strong>t_regex_pattern</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">_sre.SRE_Pattern</span></code>) – regex pattern</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="templately.re_builder">
+<code class="sig-prename descclassname">templately.</code><code class="sig-name descname">re_builder</code><span class="sig-paren">(</span><em class="sig-param">t_opening_tag</em>, <em class="sig-param">t_pattern_opening</em>, <em class="sig-param">t_closing_tag</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/templately.html#re_builder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#templately.re_builder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds the regex pattern string and returns its compiled version.</p>
+<p>The function <strong>escapes t_opening_tag, t_pattern_opening and t_closing_tag</strong>
+using the <code class="xref py py-func docutils literal notranslate"><span class="pre">re.escape()</span></code> function
+and then <strong>concatenates them</strong> into a regex pattern string.</p>
+<p>The <strong>regex string gets compiled</strong> with the <code class="xref py py-func docutils literal notranslate"><span class="pre">re.compile()</span></code> function and is returned by the function.</p>
+<p>Usage example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">regex_pattern</span> <span class="o">=</span> <span class="n">re_builder</span><span class="p">(</span><span class="s2">&quot;{{&quot;</span><span class="p">,</span> <span class="s2">&quot;ty.&quot;</span><span class="p">,</span> <span class="s2">&quot;}}&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">print</span><span class="p">(</span><span class="n">regex_pattern</span><span class="p">)</span>
+<span class="go">re.compile(&#39;\{\{\s*ty\.(.*?)\s*\}\}&#39;)</span>
+</pre></div>
+</div>
+<p>This regex will match the strings that start with <cite>{{ty.</cite> and end with “}}”
+&gt; One or more spaces after “{{” and before “}}” are valid</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t_opening_tag</strong> (<em>str</em>) – patterns opening tag</p></li>
+<li><p><strong>t_pattern_opening</strong> (<em>str</em>) – patterns starting string</p></li>
+<li><p><strong>t_closing_tag</strong> (<em>str</em>) – patterns closing tag</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return t_regex_pattern</dt>
+<dd class="field-even"><p>compiled regex pattern</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_sre.SRE_Pattern</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">templately</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, mario33881.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,3 @@
+this is
+{{ ty.placeholder1 }} a {{ ty.placeholder2 }}
+test {{ ty.placeholder3 }}
