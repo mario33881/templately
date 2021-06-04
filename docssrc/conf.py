@@ -82,5 +82,5 @@ def setup(app):
     - tell autodoc to not import the docstring of "templately" by calling
     the remove_module_docstring() function.
     '''
-    app.add_stylesheet('style.css')
+    app.add_css_file('style.css')
     app.connect("autodoc-process-docstring", remove_module_docstring)
